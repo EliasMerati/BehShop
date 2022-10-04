@@ -1,49 +1,77 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
+<!--
+Template Name: شاپ مارشو - قالب فروشگاهی ریسپانسیو HTML
+Version: 1.0.0
+Author: Kamleshyadav
+Website:
+Purchase:
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
 <html lang="en">
+<!--<![endif]-->
+<!-- Begin Head -->
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - BehShop.Web</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/BehShop.Web.styles.css" asp-append-version="true" />
+    <partial name="_Styles" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BehShop.Web</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+    <!-- main-wrapper start -->
+    <div class="main-wrapper">
+        <!-- Preloader Box -->
+        <div class="preloader-wrapper preloader-active preloader-open">
+            <div class="preloader-holder">
+                <div class="preloader d-flex justify-content-center align-items-center h-100">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - BehShop.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+        <!-- Search Box -->
+        <partial name="_Search" />
+        <!-- Header Start -->
+        <div class="header-main-wrapper header-style1">
+            <partial name="_HeaderMenu" />
+            <partial name="_Categories" />
+            <div class="bg-overlay sidebar-overlay c-toggle-btn"></div>
+        </div>
+        <!-- Banner Wrapper Start-->
+        @RenderSection("Banner",false)
+        <!-- Top ads Wrapper Start-->
+        @RenderBody()
+
+        <!-- Newsletter start -->
+        <partial name="_Newsletter" />
+
+        <!-- Footer start -->
+        <partial name="_Footer" />
+
+        <!-- Bottom Footer start -->
+        <partial name="_BottomFooter" />
+
+    </div>
+    <!-- main-wrapper End -->
+    <!-- sidebar cart start -->
+    <partial name="_SidebarCart" />
+    <div class="bg-overlay cb-overlay cmn-cart-tgl"></div>
+
+    <!-- Login form start -->
+    <!-- The Modal -->
+    <partial name="_Login" />
+
+    <!-- Register form start -->
+    <!-- The Modal -->
+    <partial name="_Register" />
+
+    <!-- sucess toster  -->
+    <!-- Toaster is active by adding "Open" Class in "e-toster-wrap" -->
+
+    <partial name="_MessageFromRegister" />
+
+    <!-- jQuery and Bootstrap Bundle (includes Popper) -->
+    <partial name="_Scripts" />
 </body>
+
 </html>
