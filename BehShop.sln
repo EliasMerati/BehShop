@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{BD562BEE
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{F8945E13-E19D-48BD-92C5-1AB487CF09D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BehShop.Common", "BehShop.Common\BehShop.Common.csproj", "{5A39F18C-796B-4432-AC04-1363A705652E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BehShop.Common", "BehShop.Common\BehShop.Common.csproj", "{5A39F18C-796B-4432-AC04-1363A705652E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{95F4A18C-8D59-4B4C-80B4-979DF510A251}"
 EndProject
@@ -17,17 +17,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{A8843E50-8D3B-4CF9-AFA7-95806F4E8B45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BehShop.Infrastructure", "BehShop.Infrastructure\BehShop.Infrastructure.csproj", "{793FB1A8-E2EA-4B02-AB05-FC0331B070AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BehShop.Infrastructure", "BehShop.Infrastructure\BehShop.Infrastructure.csproj", "{793FB1A8-E2EA-4B02-AB05-FC0331B070AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BehShop.Core", "BehShop.Core\BehShop.Core.csproj", "{E9B216B4-AD98-404D-A532-F815DDB194DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BehShop.Domain", "BehShop.Core\BehShop.Domain.csproj", "{E9B216B4-AD98-404D-A532-F815DDB194DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BehShop.Application", "BehShop.Application\BehShop.Application.csproj", "{FC9951B0-BDA8-48A0-AC50-A1285DFCE95F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BehShop.Application", "BehShop.Application\BehShop.Application.csproj", "{FC9951B0-BDA8-48A0-AC50-A1285DFCE95F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BehShop.Persistance", "BehShop.Persistance\BehShop.Persistance.csproj", "{2CE1559B-12BB-49D8-B6DA-99C086C5E222}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BehShop.Persistance", "BehShop.Persistance\BehShop.Persistance.csproj", "{2CE1559B-12BB-49D8-B6DA-99C086C5E222}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{28C90C58-833B-4241-B8A5-FA884CB185D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BehShop.Web", "BehShop.Web\BehShop.Web.csproj", "{FAAA3170-D9C0-4344-9AFF-2F217EF9DDDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BehShop.Web", "BehShop.Web\BehShop.Web.csproj", "{FAAA3170-D9C0-4344-9AFF-2F217EF9DDDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
