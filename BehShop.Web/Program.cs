@@ -1,8 +1,19 @@
+using BehShop.Application.Interfaces.Context;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using BehShop.Persistance.Contexts;
+
 var builder = WebApplication.CreateBuilder(args);
-
+var services = builder.Services;
 // Add services to the container.
-builder.Services.AddControllersWithViews();
-
+services.AddControllersWithViews();
+#region DataContext
+services.AddEntityFrameworkSqlServer().AddDbContext<DataBaseContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("BehShopConnectionString"));
+});
+#endregion
+services.AddScoped<IDatabaseContext, DataBaseContext> ();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

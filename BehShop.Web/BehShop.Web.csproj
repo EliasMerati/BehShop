@@ -2617,6 +2617,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.10" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.9" />
   </ItemGroup>
 
@@ -10139,6 +10145,11 @@
     <None Include="wwwroot\Admin\bower_components\tinymce\themes\inlite\theme.min.js" />
     <None Include="wwwroot\Admin\bower_components\tinymce\themes\modern\theme.min.js" />
     <None Include="wwwroot\Admin\bower_components\tinymce\tinymce.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BehShop.Application\BehShop.Application.csproj" />
+    <ProjectReference Include="..\BehShop.Persistance\BehShop.Persistance.csproj" />
   </ItemGroup>
 
   <ItemGroup>
