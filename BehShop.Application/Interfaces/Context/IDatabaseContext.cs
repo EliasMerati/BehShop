@@ -11,8 +11,6 @@ namespace BehShop.Application.Interfaces.Context
     public interface IDatabaseContext
     {
         #region Entities
-        DbSet<User> Users { get; set; }
-        DbSet<Role> Roles { get; set; }
         #endregion
 
 
