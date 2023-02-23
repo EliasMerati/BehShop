@@ -1,19 +1,36 @@
-using BehShop.Application.Interfaces.Context;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+using BehShop.Domain.Entities.User;
 using BehShop.Persistance.Contexts;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 // Add services to the container.
 services.AddControllersWithViews();
 #region DataContext
-services.AddEntityFrameworkSqlServer().AddDbContext<DataBaseContext>(options =>
+services.AddDbContext<IdentityDataBaseContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("BehShopConnectionString"));
+
+});
+services.AddDbContext<DatabaseContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("BehShopConnectionString"));
+
 });
 #endregion
-services.AddScoped<IDatabaseContext, DataBaseContext> ();
+
+#region Services
+
+#endregion
+
+#region Add Identity
+services.AddIdentity<User, IdentityRole>()
+    .AddEntityFrameworkStores<IdentityDataBaseContext>()
+    .AddDefaultTokenProviders();
+#endregion
+
+#region Middlewares
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -41,3 +58,6 @@ app.MapControllerRoute(
 
 
 app.Run();
+#endregion
+
+

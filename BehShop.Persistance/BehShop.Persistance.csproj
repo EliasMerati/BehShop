@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BehShop.Application\BehShop.Application.csproj" />
+    <ProjectReference Include="..\BehShop.Common\BehShop.Common.csproj" />
     <ProjectReference Include="..\BehShop.Core\BehShop.Domain.csproj" />
   </ItemGroup>
 
