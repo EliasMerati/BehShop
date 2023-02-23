@@ -5,21 +5,21 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BehShop.Persistance.Contexts
 {
-#nullable disable
+
     public class DatabaseContext : DbContext, IDatabaseContext
     {
-        public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options) { }
+        public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options) {}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            foreach (var type in modelBuilder.Model.GetEntityTypes())
+            foreach (var entitytype in modelBuilder.Model.GetEntityTypes())
             {
-                if (type.ClrType.GetCustomAttributes(typeof(AuditableAttribute), true).Length > 0)
+                if (entitytype.ClrType.GetCustomAttributes(typeof(AuditableAttribute), true).Length > 0)
                 {
-                    modelBuilder.Entity(type.Name).Property<DateTime>("InsertTime");
-                    modelBuilder.Entity(type.Name).Property<DateTime?>("UpdateTime");
-                    modelBuilder.Entity(type.Name).Property<DateTime?>("RemoveTime");
-                    modelBuilder.Entity(type.Name).Property<bool>("IsRemoved");
+                    modelBuilder.Entity(entitytype.Name).Property<DateTime>("InsertTime");
+                    modelBuilder.Entity(entitytype.Name).Property<DateTime?>("UpdateTime");
+                    modelBuilder.Entity(entitytype.Name).Property<DateTime?>("RemoveTime");
+                    modelBuilder.Entity(entitytype.Name).Property<bool>("IsRemoved");
                 }
             }
 
