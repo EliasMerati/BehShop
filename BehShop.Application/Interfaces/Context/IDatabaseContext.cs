@@ -1,12 +1,4 @@
-﻿using BehShop.Domain.Entities.User;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BehShop.Application.Interfaces.Context
+﻿namespace BehShop.Application.Interfaces.Context
 {
     public interface IDatabaseContext
     {

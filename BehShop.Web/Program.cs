@@ -8,9 +8,9 @@ var services = builder.Services;
 // Add services to the container.
 services.AddControllersWithViews();
 #region DataContext
-services.AddDbContext<IdentityDataBaseContext>(options =>
+services.AddDbContext<IdentityDataBaseContext>(option =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("BehShopConnectionString"));
+    option.UseSqlServer(builder.Configuration.GetConnectionString("BehShopConnectionString"));
 
 });
 services.AddDbContext<DatabaseContext>(options =>
