@@ -29,6 +29,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BehShop.Web", "BehShop.Web\BehShop.Web.csproj", "{FAAA3170-D9C0-4344-9AFF-2F217EF9DDDC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BehShop.Admin", "BehShop.Admin\BehShop.Admin.csproj", "{70237332-10F2-4B4B-A58E-21560088401C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{FAAA3170-D9C0-4344-9AFF-2F217EF9DDDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAAA3170-D9C0-4344-9AFF-2F217EF9DDDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAAA3170-D9C0-4344-9AFF-2F217EF9DDDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70237332-10F2-4B4B-A58E-21560088401C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70237332-10F2-4B4B-A58E-21560088401C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70237332-10F2-4B4B-A58E-21560088401C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70237332-10F2-4B4B-A58E-21560088401C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +80,7 @@ Global
 		{2CE1559B-12BB-49D8-B6DA-99C086C5E222} = {C84303BE-3912-4D54-B46E-883173869367}
 		{28C90C58-833B-4241-B8A5-FA884CB185D5} = {F8945E13-E19D-48BD-92C5-1AB487CF09D7}
 		{FAAA3170-D9C0-4344-9AFF-2F217EF9DDDC} = {28C90C58-833B-4241-B8A5-FA884CB185D5}
+		{70237332-10F2-4B4B-A58E-21560088401C} = {28C90C58-833B-4241-B8A5-FA884CB185D5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA1833BD-EAED-4869-81E1-030B55279E0F}

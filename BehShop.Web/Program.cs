@@ -1,4 +1,5 @@
 using BehShop.Domain.Entities.User;
+using BehShop.Infrastructure.IdentityConfigs;
 using BehShop.Persistance.Contexts;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -8,11 +9,7 @@ var services = builder.Services;
 // Add services to the container.
 services.AddControllersWithViews();
 #region DataContext
-services.AddDbContext<IdentityDataBaseContext>(option =>
-{
-    option.UseSqlServer(builder.Configuration.GetConnectionString("BehShopConnectionString"));
 
-});
 services.AddDbContext<DatabaseContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("BehShopConnectionString"));
@@ -21,7 +18,15 @@ services.AddDbContext<DatabaseContext>(options =>
 #endregion
 
 #region Services
-
+services.AddIdentityServices(builder.Configuration);
+services.AddAuthorization();
+services.ConfigureApplicationCookie(opt =>
+{
+    opt.ExpireTimeSpan = TimeSpan.FromMinutes(10);
+    opt.LoginPath = "/Account/Login";
+    opt.AccessDeniedPath = "/Account/AccessDenied";
+    opt.SlidingExpiration = true;
+});
 #endregion
 
 #region Add Identity
@@ -45,7 +50,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

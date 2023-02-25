@@ -10349,6 +10349,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BehShop.Application\BehShop.Application.csproj" />
+    <ProjectReference Include="..\BehShop.Infrastructure\BehShop.Infrastructure.csproj" />
     <ProjectReference Include="..\BehShop.Persistance\BehShop.Persistance.csproj" />
   </ItemGroup>
 
