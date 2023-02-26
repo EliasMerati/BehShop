@@ -9,15 +9,15 @@ var app = builder.Build();
 var services = builder.Services;
 
 #region Services
-services.AddIdentityServices(builder.Configuration);
-services.AddAuthorization();
-services.ConfigureApplicationCookie(opt =>
-{
-    opt.ExpireTimeSpan = TimeSpan.FromMinutes(10);
-    opt.LoginPath = "/Account/Login";
-    opt.AccessDeniedPath = "/Account/AccessDenied";
-    opt.SlidingExpiration = true;
-});
+//services.AddIdentityServices(builder.Configuration);
+//services.AddAuthorization();
+//services.ConfigureApplicationCookie(opt =>
+//{
+//    opt.ExpireTimeSpan = TimeSpan.FromMinutes(10);
+//    opt.LoginPath = "/Account/Login";
+//    opt.AccessDeniedPath = "/Account/AccessDenied";
+//    opt.SlidingExpiration = true;
+//});
 #endregion
 
 #region Middlewares
