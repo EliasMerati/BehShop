@@ -11,5 +11,6 @@
         public VisitorVersionDTO Browser { get; set; }
         public VisitorVersionDTO OperationSystem { get; set; }
         public DeviceDTO Device { get; set; }
+        public string VisitorId { get; set; }
     }
 }

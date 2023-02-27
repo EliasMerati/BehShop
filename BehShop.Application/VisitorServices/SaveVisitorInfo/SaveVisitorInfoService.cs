@@ -42,6 +42,8 @@ namespace BehShop.Application.VisitorServices.SaveVisitorInfo
                 PhysicalPath = request.PhysicalPath,
                 Protocol = request.Protocol,
                 ReferrerLink = request.ReferrerLink,
+                VisitorId = request.VisitorId,
+                Time = DateTime.Now,
             });
         }
     }

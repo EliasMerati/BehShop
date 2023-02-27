@@ -1,3 +1,4 @@
+using BehShop.Application.VisitorServices.GetTodayReport;
 using BehShop.Infrastructure.IdentityConfigs;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +19,10 @@ var services = builder.Services;
 //    opt.AccessDeniedPath = "/Account/AccessDenied";
 //    opt.SlidingExpiration = true;
 //});
+#endregion
+
+#region IOC
+services.AddScoped<IGetTodayReportService,GetTodayReportService>();
 #endregion
 
 #region Middlewares
