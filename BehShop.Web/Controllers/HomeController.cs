@@ -1,9 +1,11 @@
-﻿using BehShop.Web.Models;
+﻿using BehShop.Common.Filters;
+using BehShop.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace BehShop.Web.Controllers
 {
+    [ServiceFilter(typeof(ServiceVisitorFilter))]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

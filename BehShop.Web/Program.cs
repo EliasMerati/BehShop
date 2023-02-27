@@ -1,11 +1,11 @@
 using BehShop.Application.Interfaces.Context;
 using BehShop.Application.VisitorServices.SaveVisitorInfo;
+using BehShop.Common.Filters;
 using BehShop.Domain.Entities.User;
 using BehShop.Infrastructure.IdentityConfigs;
 using BehShop.Persistance.Contexts;
 using BehShop.Persistance.Contexts.MongoDBContext;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -34,8 +34,9 @@ services.ConfigureApplicationCookie(opt =>
 #endregion
 
 #region IOC
-services.AddTransient(typeof(IMongoDbContext<>),typeof(MongoDbContext<>));
-services.AddTransient<ISaveVisitorInfoService,SaveVisitorInfoService>();
+services.AddTransient(typeof(IMongoDbContext<>), typeof(MongoDbContext<>));
+services.AddTransient<ISaveVisitorInfoService, SaveVisitorInfoService>();
+services.AddScoped<ServiceVisitorFilter>();
 #endregion
 
 #region Add Identity

@@ -1,4 +1,5 @@
-﻿using BehShop.Domain.Entities.User;
+﻿using BehShop.Common.Filters;
+using BehShop.Domain.Entities.User;
 using BehShop.Web.Models.ViewModels.Register;
 using BehShop.Web.Models.ViewModels.User;
 using Microsoft.AspNetCore.Identity;
@@ -6,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BehShop.Web.Controllers
 {
+    [ServiceFilter(typeof(ServiceVisitorFilter))]
     public class AccountController : Controller
     {
         private readonly UserManager<User> _userManager;
