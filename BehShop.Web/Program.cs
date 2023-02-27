@@ -1,7 +1,11 @@
+using BehShop.Application.Interfaces.Context;
+using BehShop.Application.VisitorServices.SaveVisitorInfo;
 using BehShop.Domain.Entities.User;
 using BehShop.Infrastructure.IdentityConfigs;
 using BehShop.Persistance.Contexts;
+using BehShop.Persistance.Contexts.MongoDBContext;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,6 +31,11 @@ services.ConfigureApplicationCookie(opt =>
     opt.AccessDeniedPath = "/Account/AccessDenied";
     opt.SlidingExpiration = true;
 });
+#endregion
+
+#region IOC
+services.AddTransient(typeof(IMongoDbContext<>),typeof(MongoDbContext<>));
+services.AddTransient<ISaveVisitorInfoService,SaveVisitorInfoService>();
 #endregion
 
 #region Add Identity
