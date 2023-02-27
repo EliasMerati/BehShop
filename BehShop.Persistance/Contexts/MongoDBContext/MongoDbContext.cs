@@ -13,7 +13,7 @@ namespace BehShop.Persistance.Contexts.MongoDBContext
             db = client.GetDatabase("VisitorDB");
             collection = db.GetCollection<T>(typeof(T).Name);
         }
-        public IMongoCollection<T> MongoCollection()
+        public IMongoCollection<T> GetCollection()
         {
             return collection;
         }

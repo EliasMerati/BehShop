@@ -12,7 +12,7 @@ namespace BehShop.Application.VisitorServices.SaveVisitorInfo
         public SaveVisitorInfoService(IMongoDbContext<Visitor> mongoDbContext)
         {
             _mongoDbContext = mongoDbContext;
-            _collection = _mongoDbContext.MongoCollection();   
+            _collection = _mongoDbContext.GetCollection();   
         }
 
         public void Execute(RequestSaveVisitorInfoDTO request)
