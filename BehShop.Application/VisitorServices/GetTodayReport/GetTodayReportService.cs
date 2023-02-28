@@ -15,41 +15,59 @@ namespace BehShop.Application.VisitorServices.GetTodayReport
             _collection = _mongoDbContext.GetCollection();
         }
 
+
+
         public ResultTodayReportDTO Execute()
         {
             var Start = DateTime.Now.Date;
             var End = DateTime.Now.Date.AddDays(1);
 
             var TodayPageViewCount = _collection.AsQueryable()
-                .Where(p=> p.Time >= Start && p.Time< End)
+                .Where(p => p.Time >= Start && p.Time < End)
                 .LongCount();
 
             var TodayVisitorCount = _collection.AsQueryable()
                 .Where(p => p.Time >= Start && p.Time < End)
-                .GroupBy(p=>p.VisitorId)
+                .GroupBy(p => p.VisitorId)
                 .LongCount();
 
             var AllPageView = _collection.AsQueryable()
                 .LongCount();
 
             var AllVisitorCount = _collection.AsQueryable()
-                .GroupBy(p=>p.VisitorId)
+                .GroupBy(p => p.VisitorId)
                 .LongCount();
 
             return new ResultTodayReportDTO
             {
+
                 GeneralState = new GeneralStateDto
                 {
-                    TotalPagePerViewer = AllPageView / AllVisitorCount,
+                    TotalPagePerViewer = GetAvg(AllPageView, AllVisitorCount),
                     TotalViewer = AllVisitorCount,
-                    TotalPageViewer = AllPageView
+                    TotalPageViewer = AllPageView,
                 },
                 Today = new TodayViewDTO
                 {
                     TotalPage = TodayPageViewCount,
                     Visitors = TodayVisitorCount,
-                    TotalPagePerViewer = TodayPageViewCount / TodayVisitorCount
-                };
+                    TotalPagePerViewer =GetAvg(TodayPageViewCount, TodayVisitorCount),
+                    
+                },
+            };
+
+
+        }
+        private float GetAvg(long visitor, long pages)
+        {
+            if (visitor == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                return visitor / pages ;
             }
         }
     }
+}

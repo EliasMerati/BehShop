@@ -29,7 +29,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BehShop.Web", "BehShop.Web\BehShop.Web.csproj", "{FAAA3170-D9C0-4344-9AFF-2F217EF9DDDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BehShop.Admin", "BehShop.Admin\BehShop.Admin.csproj", "{70237332-10F2-4B4B-A58E-21560088401C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BehShop.Admin", "BehShop.Admin\BehShop.Admin.csproj", "{70237332-10F2-4B4B-A58E-21560088401C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

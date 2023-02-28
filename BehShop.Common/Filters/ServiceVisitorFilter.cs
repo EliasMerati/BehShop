@@ -6,6 +6,7 @@ using UAParser;
 
 namespace BehShop.Common.Filters
 {
+
     public class ServiceVisitorFilter : IActionFilter
     {
         private readonly ISaveVisitorInfoService _saveVisitorInfo;
@@ -16,7 +17,7 @@ namespace BehShop.Common.Filters
 
         public void OnActionExecuted(ActionExecutedContext context)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void OnActionExecuting(ActionExecutingContext context)
@@ -24,7 +25,7 @@ namespace BehShop.Common.Filters
             string IP = context.HttpContext.Request.HttpContext.Connection.LocalIpAddress.ToString();
             var ActionName = ((ControllerActionDescriptor)context.ActionDescriptor).ActionName;
             var ControllerName = ((ControllerActionDescriptor)context.ActionDescriptor).ControllerName;
-            var UserAgent = context.HttpContext.Request.Headers["User_Agent"];
+            var UserAgent = context.HttpContext.Request.Headers["User-Agent"];
             var uaparser = Parser.GetDefault();
             ClientInfo info = uaparser.Parse(UserAgent);
             var Referer = context.HttpContext.Request.Headers["Referer"].ToString();
@@ -33,7 +34,7 @@ namespace BehShop.Common.Filters
             string VisitorId = context.HttpContext.Request.Cookies["VisitorId"];
             if (VisitorId == null)
             {
-                VisitorId = Guid.NewGuid().ToString().Replace("_","");
+                VisitorId = Guid.NewGuid().ToString().Replace("-","");
                 context.HttpContext.Response.Cookies.Append("VisitorId", VisitorId, new CookieOptions
                 {
                     Path = "/",
