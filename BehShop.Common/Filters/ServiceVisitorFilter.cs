@@ -32,16 +32,7 @@ namespace BehShop.Common.Filters
             var CurrentUrl = context.HttpContext.Request.Path;
             var request = context.HttpContext.Request;
             string VisitorId = context.HttpContext.Request.Cookies["VisitorId"];
-            if (VisitorId == null)
-            {
-                VisitorId = Guid.NewGuid().ToString().Replace("-","");
-                context.HttpContext.Response.Cookies.Append("VisitorId", VisitorId, new CookieOptions
-                {
-                    Path = "/",
-                    HttpOnly = true,
-                    Expires = DateTime.Now.AddDays(30),
-                });
-            }
+           
 
             _saveVisitorInfo.Execute(new RequestSaveVisitorInfoDTO
             {

@@ -1,10 +1,13 @@
 using BehShop.Application.Interfaces.Context;
+using BehShop.Application.VisitorServices.OnlineVisitor;
 using BehShop.Application.VisitorServices.SaveVisitorInfo;
 using BehShop.Common.Filters;
 using BehShop.Domain.Entities.User;
 using BehShop.Infrastructure.IdentityConfigs;
 using BehShop.Persistance.Contexts;
 using BehShop.Persistance.Contexts.MongoDBContext;
+using BehShop.Web.Hubs;
+using BehShop.Web.Middlwares;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,6 +15,7 @@ var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 // Add services to the container.
 services.AddControllersWithViews();
+
 #region DataContext
 
 services.AddDbContext<DatabaseContext>(options =>
@@ -36,7 +40,9 @@ services.ConfigureApplicationCookie(opt =>
 #region IOC
 services.AddTransient(typeof(IMongoDbContext<>), typeof(MongoDbContext<>));
 services.AddTransient<ISaveVisitorInfoService, SaveVisitorInfoService>();
+services.AddTransient<IOnlineVisitorService, OnlineVisitorService>();
 services.AddScoped<ServiceVisitorFilter>();
+services.AddSignalR();
 #endregion
 
 #region Add Identity
@@ -55,7 +61,7 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-
+app.UseSetVisitorId();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -70,6 +76,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+app.MapHub<SignalROnlineVisitorsHub>("/ChatHub");
 
 
 app.Run();
