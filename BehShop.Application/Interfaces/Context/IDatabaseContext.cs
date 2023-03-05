@@ -1,8 +1,13 @@
-﻿namespace BehShop.Application.Interfaces.Context
+﻿using BehShop.Domain.Catalogs;
+using Microsoft.EntityFrameworkCore;
+
+namespace BehShop.Application.Interfaces.Context
 {
     public interface IDatabaseContext
     {
         #region Entities
+        DbSet<CatalogBrand> catalogBrands { get; set; }
+        DbSet<CatalogType> catalogTypes { get; set; }
         #endregion
 
 

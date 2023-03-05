@@ -1,6 +1,6 @@
 using BehShop.Application.Interfaces.Context;
 using BehShop.Application.VisitorServices.GetTodayReport;
-using BehShop.Infrastructure.IdentityConfigs;
+using BehShop.Infrastructure.MappingProfile;
 using BehShop.Persistance.Contexts.MongoDBContext;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +12,11 @@ var services = builder.Services;
 services.AddScoped<IGetTodayReportService, GetTodayReportService>();
 services.AddTransient(typeof(IMongoDbContext<>), typeof(MongoDbContext<>));
 #endregion
+
+#region AutoMapper
+services.AddAutoMapper(typeof(CatalogMappingProfile));
+#endregion
+
 #region Services
 //services.AddIdentityServices(builder.Configuration);
 //services.AddAuthorization();
@@ -24,10 +29,6 @@ services.AddTransient(typeof(IMongoDbContext<>), typeof(MongoDbContext<>));
 //});
 #endregion
 var app = builder.Build();
-
-
-
-
 
 #region Middlewares
 // Configure the HTTP request pipeline.

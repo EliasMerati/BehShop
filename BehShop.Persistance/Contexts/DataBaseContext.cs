@@ -1,6 +1,8 @@
 ﻿using BehShop.Application.Interfaces.Context;
 using BehShop.Common.Convertor;
 using BehShop.Domain.Attributes;
+using BehShop.Domain.Catalogs;
+using BehShop.Persistance.Configurations;
 using Microsoft.EntityFrameworkCore;
 
 namespace BehShop.Persistance.Contexts
@@ -8,11 +10,15 @@ namespace BehShop.Persistance.Contexts
 
     public class DatabaseContext : DbContext, IDatabaseContext
     {
-        public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options) 
+        public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
 
         }
 
+        #region DBSet
+        public DbSet<CatalogBrand> catalogBrands { get; set; }
+        public DbSet<CatalogType> catalogTypes { get; set; }
+        #endregion
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             foreach (var entitytype in modelBuilder.Model.GetEntityTypes())
@@ -25,6 +31,11 @@ namespace BehShop.Persistance.Contexts
                     modelBuilder.Entity(entitytype.Name).Property<bool>("IsRemoved");
                 }
             }
+
+            #region Configuration
+            modelBuilder.ApplyConfiguration(new CatalogBrandConfiguration());
+            modelBuilder.ApplyConfiguration(new CatalogTypeConfiguration());
+            #endregion
 
             base.OnModelCreating(modelBuilder);
         }
@@ -54,6 +65,7 @@ namespace BehShop.Persistance.Contexts
                 {
                     item.Property("RemoveTime").CurrentValue = DateTime.Now.Date();
                     item.Property("IsRemoved").CurrentValue = true;
+                    item.State = EntityState.Modified;
                 }
             }
 

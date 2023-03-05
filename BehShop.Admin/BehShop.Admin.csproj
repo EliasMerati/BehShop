@@ -7634,6 +7634,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <TypeScriptCompile Include="wwwroot\Them\bower_components\moment\moment.d.ts" />
   </ItemGroup>
 

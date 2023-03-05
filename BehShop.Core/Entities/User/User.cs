@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace BehShop.Domain.Entities.User
 {
-#nullable disable
+//#nullable disable
     [Auditable]
     public class User : IdentityUser
     {
