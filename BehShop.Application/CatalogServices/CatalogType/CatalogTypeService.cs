@@ -17,43 +17,42 @@ namespace BehShop.Application.CatalogServices.CatalogType
 
         public BaseEntity<CatalogTypeDTO> Add(CatalogTypeDTO catalogType)
         {
-            var model = _mapper.Map<CatalogType>(catalogType);
-            _db.catalogTypes.Add(model);
-            _db.SaveChanges();
-            return new BaseEntity<CatalogTypeDTO>() { true,
-                new IList<string> { $"تایپ {model.Type} با موفقیت در سیستم ثبت شد" },
-                _mapper.Map<CatalogTypeDTO>(model)
-            };
+            //var model = _mapper.Map<CatalogType>(catalogType);
+            //_db.catalogTypes.Add(model);
+            //_db.SaveChanges();
+            //return new BaseEntity<CatalogTypeDTO>() { true,
+            //    new IList<string> { $"تایپ {model.Type} با موفقیت در سیستم ثبت شد" },
+            //    _mapper.Map<CatalogTypeDTO>(model)
+            //};
 
-                
+            return null;  
 
         }
 
         public BaseEntity<CatalogTypeDTO> Edit(CatalogTypeDTO catalogType)
         {
-            var model = _db.catalogTypes.SingleOrDefault(p => p.Id == catalogType.Id);
-            _mapper.Map(catalogType, model);
-            _db.SaveChanges();
-            return new BaseEntity<CatalogTypeDTO>(){
-                true,
-                new IList<string> { $"تایپ {model.Type} با موفقیت ویرایش شد"},
-                _mapper.Map<CatalogTypeDTO>(model)
-            };
+            //var model = _db.catalogTypes.SingleOrDefault(p => p.Id == catalogType.Id);
+            //_mapper.Map(catalogType, model);
+            //_db.SaveChanges();
+            //return new BaseEntity<CatalogTypeDTO>(
+            //    true,
+            //    new IList<string> { $"تایپ {model.Type} با موفقیت ویرایش شد" },
+            //    _mapper.Map<CatalogTypeDTO>(model));
+            return null;
         }
 
         public BaseEntity<CatalogTypeDTO> FindById(int id)
         {
-            var data = _db.catalogTypes.Find(id);
-            var result = _mapper.Map<CatalogTypeDTO>(data);
-            return new BaseEntity<CatalogTypeDTO>() {
+            return null;
 
-                true,
-                 null,
-                 result
-            };
-
-                 
-            
+            //var data = _db.catalogTypes.Find(id);
+            //var result = _mapper.Map<CatalogTypeDTO>(data);
+            //return new BaseEntity<CatalogTypeDTO>
+            //    (
+            //     true,
+            //     null,
+            //     result
+            //    ); 
         }
 
         public PaginatedItemDTO<CatalogTypeDTO> GetAll(int? parentId, int pageSize, int page)
@@ -63,16 +62,15 @@ namespace BehShop.Application.CatalogServices.CatalogType
 
         public BaseEntity Remove(int Id)
         {
-            var catalogtype = _db.catalogTypes.Find(Id);
-            _db.catalogTypes.Remove(catalogtype);
-            _db.SaveChanges();
-            return new BaseEntity()
-            {
-                true,
-                new List<string> { $"آیتم با موفقیت حذف شد" }
-            };
-
-
+            return null;
+            //var catalogtype = _db.catalogTypes.Find(Id);
+            //_db.catalogTypes.Remove(catalogtype);
+            //_db.SaveChanges();
+            //return new BaseEntity()
+            //{
+            //    true,
+            //    new IList<string> { $"آیتم با موفقیت حذف شد" },
+            //};
         }
     }
 }

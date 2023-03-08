@@ -8,7 +8,7 @@ namespace BehShop.Persistance.Configurations
     {
         public void Configure(EntityTypeBuilder<CatalogType> builder)
         {
-            builder.Property(ct => ct.Type)
+            builder.Property(ct => ct.Type)    
                 .IsRequired()
                 .HasMaxLength(100);
         }

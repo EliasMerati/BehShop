@@ -48,7 +48,8 @@ services.AddSignalR();
 #region Add Identity
 services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<IdentityDataBaseContext>()
-    .AddDefaultTokenProviders();
+    .AddDefaultTokenProviders()
+    .AddErrorDescriber<CustomIdentityErrors>();
 #endregion
 
 #region Middlewares

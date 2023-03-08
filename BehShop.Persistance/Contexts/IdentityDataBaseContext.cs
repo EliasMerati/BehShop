@@ -14,7 +14,7 @@ namespace BehShop.Persistance.Contexts
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            #region Rename Identity Tables &Schema
+            #region Rename Identity Tables & Schema
             builder.Entity<IdentityUser<string>>().ToTable("Users", "Identity");
             builder.Entity<IdentityRole<string>>().ToTable("Roles", "Identity");
             builder.Entity<IdentityRoleClaim<string>>().ToTable("RoleClaims", "Identity");

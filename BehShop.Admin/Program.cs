@@ -1,5 +1,6 @@
 using BehShop.Application.Interfaces.Context;
 using BehShop.Application.VisitorServices.GetTodayReport;
+using BehShop.Infrastructure.IdentityConfigs;
 using BehShop.Infrastructure.MappingProfile;
 using BehShop.Persistance.Contexts.MongoDBContext;
 
@@ -18,15 +19,8 @@ services.AddAutoMapper(typeof(CatalogMappingProfile));
 #endregion
 
 #region Services
-//services.AddIdentityServices(builder.Configuration);
-//services.AddAuthorization();
-//services.ConfigureApplicationCookie(opt =>
-//{
-//    opt.ExpireTimeSpan = TimeSpan.FromMinutes(10);
-//    opt.LoginPath = "/Account/Login";
-//    opt.AccessDeniedPath = "/Account/AccessDenied";
-//    opt.SlidingExpiration = true;
-//});
+services.AddIdentityServices(builder.Configuration);
+services.AddAuthorization();
 #endregion
 var app = builder.Build();
 

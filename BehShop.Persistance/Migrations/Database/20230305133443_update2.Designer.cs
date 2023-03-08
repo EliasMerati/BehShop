@@ -4,6 +4,7 @@ using BehShop.Persistance.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BehShop.Persistance.Migrations.Database
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20230305133443_update2")]
+    partial class update2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -66,7 +68,7 @@ namespace BehShop.Persistance.Migrations.Database
                     b.Property<bool>("IsRemoved")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("ParentCatalogTypeId")
+                    b.Property<int>("ParentCatalogTypeId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("RemoveTime")
@@ -91,7 +93,9 @@ namespace BehShop.Persistance.Migrations.Database
                 {
                     b.HasOne("BehShop.Domain.Catalogs.CatalogType", "ParentCatalogType")
                         .WithMany("SubType")
-                        .HasForeignKey("ParentCatalogTypeId");
+                        .HasForeignKey("ParentCatalogTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("ParentCatalogType");
                 });
