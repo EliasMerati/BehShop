@@ -16,8 +16,8 @@ namespace BehShop.Application.VisitorServices.OnlineVisitor
 
         public void ConnectUser(string ClientId)
         {
-            var Exist = mongoCollection.AsQueryable().FirstOrDefault(p=> p.Equals(ClientId));
-            if (Exist is null)
+            var Exist = mongoCollection.AsQueryable().FirstOrDefault(p=> p.ClientId == ClientId);
+            if (Exist == null)
             {
                 mongoCollection.InsertOne(new OnlineVisitors
                 {

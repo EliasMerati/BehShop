@@ -18,7 +18,8 @@ namespace BehShop.Infrastructure.IdentityConfigs
                 services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<IdentityDataBaseContext>()
                 .AddRoles<IdentityRole>()
-                .AddDefaultTokenProviders();
+                .AddDefaultTokenProviders()
+                .AddErrorDescriber<CustomIdentityErrors>();
 
                 services.Configure<IdentityOptions>(opt =>
                 {

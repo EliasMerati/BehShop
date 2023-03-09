@@ -12,74 +12,71 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-var services = builder.Services;
-// Add services to the container.
-services.AddControllersWithViews();
-
-#region DataContext
-
-services.AddDbContext<DatabaseContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("BehShopConnectionString"));
 
-});
-#endregion
+    // Add services to the container.
+    builder.Services.AddControllersWithViews();
 
-#region Services
-services.AddIdentityServices(builder.Configuration);
-services.AddAuthorization();
-services.ConfigureApplicationCookie(opt =>
-{
-    opt.ExpireTimeSpan = TimeSpan.FromMinutes(10);
-    opt.LoginPath = "/Account/Login";
-    opt.AccessDeniedPath = "/Account/AccessDenied";
-    opt.SlidingExpiration = true;
-});
-#endregion
+    #region DataContext
 
-#region IOC
-services.AddTransient(typeof(IMongoDbContext<>), typeof(MongoDbContext<>));
-services.AddTransient<ISaveVisitorInfoService, SaveVisitorInfoService>();
-services.AddTransient<IOnlineVisitorService, OnlineVisitorService>();
-services.AddScoped<ServiceVisitorFilter>();
-services.AddSignalR();
-#endregion
+    builder.Services.AddDbContext<DatabaseContext>(options =>
+    {
+        options.UseSqlServer(builder.Configuration.GetConnectionString("BehShopConnectionString"));
 
-#region Add Identity
-services.AddIdentity<User, IdentityRole>()
-    .AddEntityFrameworkStores<IdentityDataBaseContext>()
-    .AddDefaultTokenProviders()
-    .AddErrorDescriber<CustomIdentityErrors>();
-#endregion
+    });
+    #endregion
+
+    #region Services
+    builder.Services.AddIdentityServices(builder.Configuration);
+    builder.Services.AddAuthorization();
+    builder.Services.ConfigureApplicationCookie(opt =>
+    {
+        opt.ExpireTimeSpan = TimeSpan.FromMinutes(10);
+        opt.LoginPath = "/Account/Login";
+        opt.AccessDeniedPath = "/Account/AccessDenied";
+        opt.SlidingExpiration = true;
+    });
+    #endregion
+
+    #region IOC
+    builder.Services.AddTransient(typeof(IMongoDbContext<>), typeof(MongoDbContext<>));
+    builder.Services.AddTransient<ISaveVisitorInfoService, SaveVisitorInfoService>();
+    builder.Services.AddTransient<IOnlineVisitorService, OnlineVisitorService>();
+    builder.Services.AddScoped<ServiceVisitorFilter>();
+    builder.Services.AddSignalR();
+    #endregion
+
+}
+
 
 #region Middlewares
+
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+    // Configure the HTTP request pipeline.
+    if (!app.Environment.IsDevelopment())
+    {
+        app.UseExceptionHandler("/Home/Error");
+        // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+        app.UseHsts();
+    }
+    app.UseSetVisitorId();
+    app.UseHttpsRedirection();
+    app.UseStaticFiles();
+
+    app.UseRouting();
+    app.UseAuthentication();
+    app.UseAuthorization();
+
+    app.MapControllerRoute(
+           name: "areas",
+           pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+    app.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+
+    app.MapHub<SignalROnlineVisitorsHub>("/ChatHub");
 }
-app.UseSetVisitorId();
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-
-app.UseRouting();
-app.UseAuthentication();
-app.UseAuthorization();
-
-app.MapControllerRoute(
-       name: "areas",
-       pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-app.MapHub<SignalROnlineVisitorsHub>("/ChatHub");
-
-
 app.Run();
 #endregion
 
